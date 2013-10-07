@@ -1,0 +1,396 @@
+@charset "utf-8";
+
+@import "bourbon";
+@import "neat";
+@import "normalize";
+
+
+/*-------------------------------*/
+/*-- jojo-harma.me
+/*-------------------------------*/
+
+
+/*-------------------------------*/
+/*-- Variables and re-usables
+/*-------------------------------*/
+
+$max-width: 900px;
+$grid-columns: 32;
+
+/*---- Colours ----*/
+
+$green: #39c28a;
+$white: #ffffff;
+$black: #2f3232;
+$headline-black: #221f19;
+
+/*---- Work page backgrounds --*/
+
+$light-grey: #fbfbfb;
+
+/*---- Font weights ----*/
+
+$thin: 100;
+$light: 300;
+$regular: 400;
+$bold: 700;
+$ultra-bold: 900;
+
+/*-- Breakpoints --*/
+
+$mobile: 480px;
+$tablet: 768px;
+$small-desktop: 960px;
+
+
+
+.inline                         { 
+                                  li {display: inline;} 
+                                }
+
+.fluid                          { max-width: 100%;}           
+
+.unstyled-list                  { list-style-type: none; padding: 0; margin:0;}
+
+@mixin text-centre              { text-align: center;}
+
+.grey-texture                   { background: #e7e7e7 url(../images/grey-bg-tile.png) repeat;}
+
+.white-text                     { color: $white;}
+
+.light-grey-bg 					{ background-color: $light-grey;}
+
+
+/*-------------------------------*/
+/*-- Typography
+/*-------------------------------*/
+
+body                             { font-size: 62.5%; font-family: 'Lato', "Helvetica Neue", Helvetica, Arial, sans-serif; color: $black;}
+
+.main-nav                        { font-size: 1.8em;}
+
+.main-nav__link                  { font-weight: $light; text-decoration: none; color: $black;
+									&:hover { text-decoration: underline;}
+								 }
+
+.main-nav__link .active          { font-weight: $bold; text-decoration: underline;}
+
+.intro                           { @include text-centre;}
+
+.hello                           { font-size: 1.4em; font-weight: $bold; text-transform: uppercase;}
+
+.intro__headline                 { font-size: 3.6em; line-height: 1.4em; font-weight: $thin; font-style: italic; margin-top: 2.4em;
+								 	@include media(max-width $mobile) { font-size: 2.4em;}
+								 }
+
+.process__item 					 { @include text-centre;}
+
+.contact__details                { @include text-centre;}
+
+.contact__social			     { font-size: 1.8em;
+									a {color: $black; text-decoration: none;
+										&:hover { text-decoration: underline;}
+									}
+								 }
+
+.contact__email                  { font-size: 2.4em; font-weight: $light; color: $black;}
+
+.thanks                          { @include text-centre;}
+
+.thanks__title                   { font-size: 4.1em; font-weight: $bold; text-transform: uppercase;}
+
+.thanks__subtitle                { font-size: 3.6em; font-weight: $light;}
+
+.about__text .title 		 	{ color: $headline-black; font-size: 4.2em; text-transform: uppercase; font-weight: $ultra-bold; letter-spacing: 0.07em;}
+
+.about__text .subtitle 		 	{ font-size: 1.8em; text-transform: uppercase; font-weight: $ultra-bold; letter-spacing: 0.12em;}
+
+.about__bio						{ font-size: 1.6em; font-weight: $light; line-height: 1.6em;}
+
+.work-type 						{ font-size: 2.1em; font-weight: $regular; font-style: italic;}
+
+.work-page .title 				{ font-size: 4.2em; text-transform: uppercase; font-weight: $light;}
+
+.work-page__intro 				{ @include text-centre;}
+
+.project-link 					{ color: $black; @include text-centre;}
+
+.prev							{ text-align: left;}
+.next							{ text-align: right;}
+
+.project-link__title 			{ font-size: 1.6em; font-weight: $light; text-decoration: none;}
+
+.work-page__content				{ @include text-centre;}
+
+.work-page__desc 				{ font-size: 1.8em; font-weight: $light; font-style: italic; line-height: 1.6em; @include text-centre;
+									a { color: $green;}
+								}
+
+.work__item__caption 			{ @include text-centre;}
+
+.work__item__link 				{ text-decoration: none;}
+
+.work__item__type, 
+.work__item__title				{ font-size: 1.8em; color: $white;
+									@include media(max-width $tablet) { font-size: 1.4em; color: $black;}
+								}
+
+.work__item__type				{ font-weight: $bold;}
+
+.work__item__title				{ font-weight: $light; font-style: italic;}
+
+
+footer                           { font-size: 1.2em; @include text-centre;}
+
+
+/*-------------------------------*/
+/*-- Layout 
+/*-------------------------------*/
+
+.container                      { @include outer-container();}
+
+header                          { background-color: $green;}
+
+.nav-bar                        { background-color: $white; @include pad(1.8em 4.2em); width: 100%; z-index: 1000; position: static; height: 80px;				
+									@include media(max-width $mobile) { @include pad( 0.6em 1.2em); position: fixed; height: 60px;}
+								}
+
+.index .nav-bar 				{ 
+									@include media(min-width $tablet) { position: fixed; @include transition (top 0.3s ease-in-out);}
+								}
+
+.release 						{ @include media(min-width $tablet) {top:-80px;}}
+
+.logo                           { float: left; 
+									img { @include media(max-width $mobile) { width: 50px; margin-top: 0.6em;}}
+  								}
+
+.main-nav                       { float: right; margin-top: 0.6em;} 
+
+.main-nav__link                 { margin-right: 2.4em;
+									@include media(max-width $mobile) { margin-right: 1.2em;}
+								}
+
+.main-nav__link:nth-of-type(3n) { margin-right: 0;} 
+
+.intro                          { @include span-columns(26); @include shift(3); @include pad(14em 0 3em 0); position: relative;
+									@include media (max-width $tablet) { padding-top: 6.6em;}
+									@include media (max-width $mobile) { padding-top: 10.2em;}
+								}
+
+.intro__logo					{ @include clearfix; margin-bottom: 3.6em;}
+
+.hello 							{ display: block; clear: left;}
+
+.intro__headline 				{ margin-top: 0.12em;}
+
+.intro__arrow 					{ @include triangle(60px, $green, down); position: absolute; bottom: -60px; left: 50%; margin-left: -30px;}
+
+.intro__arrow-inner 			{@include triangle(14px, $white, down); position: absolute; top: -30px; left: -7px;}
+
+.work 							{ @include clearfix; padding-top: 6.6em;}
+
+.work__item 					{ position: relative; @include span-columns(10 of 32); @include shift(1); margin-bottom: 3.15223%;
+									@include media(min-width 770px) {
+										&:first-of-type {@include shift(0);}
+										&:nth-of-type(3n) { margin-left: 0; clear: left;}
+										&:nth-of-type(3n+2) { @include omega();}	
+										}								
+									@include media(max-width 770px) { @include span-columns(14 of 32); 
+										&:nth-of-type(odd) { @include shift(2); margin-bottom: 6.30446%;}
+									}
+								}
+
+.work__img__bg					{ background-color: $black; display: block;}
+
+.work__item .thumb 				{ @include transition (all 0.25s ease-in-out); background-color: $black; display: block;
+
+
+									&.fade {
+											@include media(min-width $small-desktop) { opacity: 0.1;}
+											@include media(max-width $tablet) { opacity: 1;}
+											}
+								}
+
+
+.work__item.double-col			{ @include span-columns(21 of 32); @include shift(0);
+ 									@include media(max-width $tablet) {  @include span-columns(30 of 32); @include shift(1);}
+ 								}
+
+ .work__item.double-col + .work__item { @include media(min-width $tablet) {@include omega();}}
+
+.work__item__caption 			{ padding-top: 34%; position: absolute; top: 0; z-index: 100; display: inline-block; height: 100%; width: 100%; opacity: 0; @include transition (opacity 0.3s ease-in-out);
+									&:hover { opacity: 1;}
+									img { display: block; margin: 0 auto;}
+									@include media(max-width $tablet) { opacity: 1; position: relative; padding-top: 0; height: 60px; background-color: $white;
+										img { display: none;}
+									}
+								}
+
+.double-col .work__item__caption { padding-top: 15%;
+									@include media(max-width $tablet) { padding-top: 0;}
+								}
+
+
+.work__item__type				{ margin-bottom: 6px;}
+
+.work__item__title				{ margin-top: 0;}
+
+// .process 						{ @include pad(5.4em 0);}
+
+// .process__item					{ @include span-columns(10 of 32); @include shift(1); height: 300px;}
+
+// .process__item:first-of-type	{ @include shift(0);}
+
+// .process__item:last-of-type		{ @include omega;}
+
+.thanks                         { @include pad(12em 0); position: relative;}
+
+.thanks__title                  { margin: 0 0 0.3em 0;}
+
+.thanks__subtitle               { margin: 0;}
+
+.white__arrow 					{ @include triangle(60px, $white, down); position: absolute; bottom: -60px; left: 50%; margin-left: -30px;}
+
+.contact__details               { @include pad(9em 0 0 0);}
+
+.contact__social				{ margin-bottom: 3.6em;
+									@include media(max-width 584px) { margin-bottom: 12em;}
+								}
+
+.contact__social__link			{ margin-right: 4.8em;							
+									&:last-of-type { margin-right: 0;}
+									@include media(max-width 584px) { @include span-columns(16 of 32); @include pad(1.2em 0); border-bottom: 1px solid #e0e0e0; margin: 0; 
+										&:nth-of-type(even) { border-left:1px solid #e0e0e0;}
+										&:nth-of-type(3n), &:last-of-type { border-bottom: 0;}
+									}
+								}								
+
+.about-bg						{background: url(../images/about-img.jpg) no-repeat; background-size: cover; width: 100%; padding-bottom: 18%;
+									@include media(max-width $tablet) { background: url(../images/about-img-tablet.jpg) no-repeat;}
+									@include media(max-width $mobile) { background-image: none; background-color: #a08974;}
+								}
+
+.about__text 					{ @include span-columns(12); @include shift(1); margin-top: 10%;
+									@include media(max-width $mobile) { @include span-columns(30); @include shift(1);}
+								}
+
+.about__bar 					{ width: 80%; height: 6px; background-color: $headline-black; display: block; margin-top: 48px;
+									@include media(max-width $mobile) { @include fill-parent;}
+								}
+
+.work-page 						{ position: relative;}
+
+.work-page__intro-bg			{ height: 300px; display: inline-block; width: 100%;}
+
+.work-page__intro 				{ @include pad(12em 0 7em 0); position: relative; opacity: 0;}
+
+.project-link-wrap 				{ position: absolute; top: 130px;
+									@include media(max-width $mobile) { top: 230px;}
+								}
+
+.project-link 					{ display: block; width: 44px; height: 44px; @include hide-text;}
+
+
+.project-link__title			{ background-color: $white; padding: 0.6em 2.4em; border-radius: 6px; opacity: 0; @include transition (all 0.2s ease-in-out); position: absolute; white-space: nowrap; top: 0;
+									&.visible { opacity: 1;}
+								}		
+
+.arrow 							{ background: url(../images/arrows.png) no-repeat; opacity: 0.3; @include transition (all 0.2s ease-in-out);									
+									&:hover { opacity: 1;}
+								}		
+
+.prev							{ left: 40px;}
+.next							{ right: 40px;}
+
+.prev .arrow					{ left: 0; background-position: left 0;}
+.next .arrow					{ right: 0; background-position: right -78px;}
+
+.prev .project-link__title 		{ left: 44px;}
+.next .project-link__title 		{ right: 44px;}
+
+
+.work-page .title 				{ margin: 0.36em 0;}
+
+.work-page__img-bg				{ @include pad(6.6em 0 0 0);}
+
+.work-page__img-wrap 			{ @include span-columns(28); @include shift(2); position: relative; margin-bottom: 12em; @include text-centre;
+									&:last-of-type { margin-bottom: 0;}
+								}
+
+.logos .work-page__img-wrap:first-of-type { margin-bottom: 9em;}
+
+.logos .work-page__img-wrap		{ margin-bottom: 3.6em;}
+
+.logos .work-page__img-wrap:last-of-type { margin-bottom: 9em;}
+
+.work-page__img 				{ @include fill-parent;}
+
+.work-page__desc 				{ @include span-columns(22); @include shift(5); @include pad(1.8em 0 6em 0);}
+
+.work-page .detail   			{ position: absolute; display: block; opacity: 0; max-width: 100%;
+									@include media(max-width $mobile) { visibility: hidden;}
+								}
+
+.contact__email 				{ background: url(../images/email-arrow.png) no-repeat 0 12px; padding-left: 36px; margin-left: -36px; display: inline-block;}
+
+.contact-divide					{ height: 1px; background-color: #d9d9d9; @include span-columns(14); @include shift(9); margin-top:3.6em;} 
+
+footer                          { width: 100%; @include pad(3em 0 6em 0);}
+
+
+/*---- Project specific ----*/
+
+.bbc-careers .detail.one 		{ left: -10%; top: 28%;}
+.bbc-careers .detail.two 		{ left: 4%; top: 64%;}
+
+.first-direct .detail.one 		{ max-width: 260px; right: -8%; top: 32%; width: 35%;}
+.first-direct .detail.two		{ max-width: 280px; left: -2%; top: 46%; width: 35%;}
+.first-direct .detail.three		{ max-width: 216px; left: 8%; top: 22%; width: 28%;}
+ 
+.pedalempower .detail.one 		{ max-width: 290px; left: -14%; top: 52%; width: 37%;}
+.pedalempower .detail.two 		{ max-width: 150px;left: 4%; top: 38%; width: 18%;}
+
+.nhs .detail.one 				{ max-width: 280px; right: -16%; top: 44%; width: 40%;} 
+
+.ukie .detail.one 				{ max-width: 280px; left: -8%; top: 38%; width: 32%;}
+.ukie .detail.two 				{ max-width: 202px; left: -2%; top: 53%; width: 26%;}
+.ukie .detail.three 			{ max-width: 180px; left: 2%; top: 34%; width: 22%;}
+
+
+
+
+/*-------------------------------*/
+/*-- Animation
+/*-------------------------------*/
+
+/*---- Keyframes ----*/
+
+@include keyframes(popIn) { 0% { @include transform(scale(0.6));} 100% { @include transform(scale(1));}}
+@include keyframes(fadeIn) { from { opacity: 0 } to { opacity: 1 }}
+@include keyframes(slideUp) { from { top: 60px } to { top: 0 }}
+
+/*---- Animation ----*/
+
+.detail.animate 				{
+								  	@include animation-name(popIn, fadeIn);								  
+								  	@include animation-duration(0.5s);
+								  	@include transition(all 1s $ease-out-circ);
+								  	@include animation-fill-mode(forwards);
+								 }
+
+.detail.one.animate 			{
+									@include animation-delay(0.2s);
+								}
+
+.detail.two.animate 			{
+									@include animation-delay(0.6s);
+								}	
+
+.work-page__intro 				{
+									@include animation-name(slideUp, fadeIn);
+									@include animation-delay(0.2s);								  
+								  	@include animation-duration(0.8s);
+								  	@include transition(all 1s $ease-out-circ);
+								  	@include animation-fill-mode(forwards);
+								}
